@@ -80,7 +80,7 @@
 <script type="text/javascript">
     jQuery(function(){  
         var j = jQuery;
-        <% if(eu.appsatori.gaelyk.console.GaelykConsolePlugin.allowReadOnly && (!users.userLoggedIn || !users.userAdmin)) { %>
+        <% if(org.gaelyk.console.GaelykConsolePlugin.allowReadOnly && (!users.userLoggedIn || !users.userAdmin)) { %>
 	        showMessage('Template read only!', 'info', 'Console is read only because you are not logged in as admin!', true);
 	        j('.form-actions a').addClass('disabled');
 	        j('#name, #tags, #render').attr('disabled', 'disabled')
