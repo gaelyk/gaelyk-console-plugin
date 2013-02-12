@@ -12,7 +12,8 @@
     href="$twitterBootstrap.css" />
 <link rel="stylesheet" type="text/css"
     href="$twitterBootstrap.responsive" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
 <script type="text/javascript" src="$twitterBootstrap.js"></script>
 <style type="text/css">
     body {
@@ -20,7 +21,7 @@
     }
     
     .ace_editor {
-       font-size: ${eu.appsatori.gaelyk.console.GaelykConsolePlugin.fontSize}px;
+       font-size: ${org.gaelyk.console.GaelykConsolePlugin.fontSize}px;
     }
     
     #script, #template{
@@ -194,9 +195,6 @@
                 <a class="btn btn-danger" id="doDelete">Delete</a>
             </div>
         </div>
-        <footer class="footer">
-                <p>&copy; 2012 <a href="http://www.appsatori.eu">AppSatori s.r.o.</a></p>
-        </footer>
     </div>
     <script type="text/javascript" src="/gpr/gaelykconsole/js/ace.js"></script>
     <script type="text/javascript" src="/gpr/gaelykconsole/js/theme-eclipse.js"></script>
@@ -234,8 +232,8 @@
                 tpleditor.setReadOnly(true);
             <% } %>
             
-            document.getElementById('script').style.fontSize='${eu.appsatori.gaelyk.console.GaelykConsolePlugin.fontSize}px';
-            document.getElementById('template').style.fontSize='${eu.appsatori.gaelyk.console.GaelykConsolePlugin.fontSize}px';
+            document.getElementById('script').style.fontSize='${org.gaelyk.console.GaelykConsolePlugin.fontSize}px';
+            document.getElementById('template').style.fontSize='${org.gaelyk.console.GaelykConsolePlugin.fontSize}px';
         };
         </script>
 </body>

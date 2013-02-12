@@ -46,6 +46,9 @@ jar {
 	baseName pluginName
 }
 
+jar.dependsOn gaelykPrecompileTemplate
+jar.dependsOn gaelykPrecompileGroovlet
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
 	baseName = pluginName
 	from "${project.docsDir}/javadoc"
@@ -153,3 +156,4 @@ if(hasProperty('nexusUsername') && hasProperty('nexusPassword')){
 	}
 }
 
+jar.enabled = true
