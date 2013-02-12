@@ -21,18 +21,13 @@ def pluginName = 'gaelyk-console'
 version = ext.gaelykLatestVersion
 group = 'org.gaelyk'
 
-repositories {
-	mavenCentral()
-        mavenRepo name: 'sonatype-snapshots', url: 'https://oss.sonatype.org/content/repositories/snapshots'
-}
-
 dependencies {
 	groovy "org.codehaus.groovy:groovy-all:${ext.gaelykGroovyVersion}"
 	compile "com.google.appengine:appengine-api-1.0-sdk:${ext.gaelykAppEngineVersion}",
 	        "com.google.appengine:appengine-api-labs:${ext.gaelykAppEngineVersion}"
 	compile	"org.gaelyk:gaelyk:${ext.gaelykLatestVersion}"
 	compile	"org.gaelyk:gaelyk-resources:${ext.gaelykLatestVersion}"
-    compile 'org.gaelyk:gaelyk-bootstrap-resources:${ext.gaelykLatestVersion}'
+    compile "org.gaelyk:gaelyk-bootstrap-resources:${ext.gaelykLatestVersion}'"
 
 
 	testCompile "org.gaelyk:gaelyk-spock:${ext.gaelykSpockLatestVersion}",
