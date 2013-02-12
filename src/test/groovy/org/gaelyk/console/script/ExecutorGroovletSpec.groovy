@@ -1,16 +1,9 @@
 package org.gaelyk.console.script
 
-import java.io.StringWriter;
+import groovy.json.JsonSlurper
+import groovyx.gaelyk.spock.GroovletUnderSpec
 
-import eu.appsatori.gaelyk.console.ConsolePluginGroovletSpec;
-
-import spock.lang.Shared;
-
-import groovy.json.JsonSlurper;
-import groovy.lang.MetaClass
-import groovyx.gaelyk.GaelykCategory;
-import groovyx.gaelyk.spock.GaelykUnitSpec;
-import groovyx.gaelyk.spock.GroovletUnderSpec;
+import org.gaelyk.console.ConsolePluginGroovletSpec
 
 class ExecutorGroovletSpec extends ConsolePluginGroovletSpec {
 
@@ -21,9 +14,7 @@ class ExecutorGroovletSpec extends ConsolePluginGroovletSpec {
 		
 		groovletInstance.params = [text: "7+9"]
 		
-		use(GaelykCategory){
-			groovletInstance.post()
-		}
+		groovletInstance.post()
 		
 		def json = new JsonSlurper().parseText(sw.toString())
 		
@@ -40,9 +31,7 @@ class ExecutorGroovletSpec extends ConsolePluginGroovletSpec {
 		
 		groovletInstance.params = [text: "xxx"]
 		
-		use(GaelykCategory){
-			groovletInstance.post()
-		}
+		groovletInstance.post()
 		
 		def json = new JsonSlurper().parseText(sw.toString())
 		

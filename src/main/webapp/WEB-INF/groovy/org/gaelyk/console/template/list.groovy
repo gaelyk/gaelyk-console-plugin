@@ -1,8 +1,8 @@
-package eu.appsatori.gaelyk.console.template
+package org.gaelyk.console.template
 
-import eu.appsatori.gaelyk.console.ConsoleTemplateRepository
-import groovy.io.FileType;
 import groovy.json.JsonBuilder
+
+import org.gaelyk.console.ConsoleTemplateRepository
 
 
 JsonBuilder json = []

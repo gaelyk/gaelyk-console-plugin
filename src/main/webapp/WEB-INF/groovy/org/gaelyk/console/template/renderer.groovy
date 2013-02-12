@@ -1,6 +1,6 @@
-package eu.appsatori.gaelyk.console.template
+package org.gaelyk.console.template
 
-import eu.appsatori.gaelyk.console.ConsoleTemplateRenderer
+import org.gaelyk.console.ConsoleTemplateRenderer
 
 
 // because of webkit restrictions

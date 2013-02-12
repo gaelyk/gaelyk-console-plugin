@@ -1,15 +1,10 @@
 package org.gaelyk.console.template
 
-import java.io.StringWriter;
+import groovy.json.JsonSlurper
+import groovyx.gaelyk.spock.GroovletUnderSpec
 
-import eu.appsatori.gaelyk.console.ConsolePluginGroovletSpec;
-import eu.appsatori.gaelyk.console.ConsoleTemplateRepository;
-
-import groovy.json.JsonSlurper;
-import groovy.lang.MetaClass
-import groovyx.gaelyk.GaelykCategory;
-import groovyx.gaelyk.spock.GaelykUnitSpec;
-import groovyx.gaelyk.spock.GroovletUnderSpec;
+import org.gaelyk.console.ConsolePluginGroovletSpec
+import org.gaelyk.console.ConsoleTemplateRepository
 
 class SaveGroovletSpec extends ConsolePluginGroovletSpec {
 
@@ -20,9 +15,7 @@ class SaveGroovletSpec extends ConsolePluginGroovletSpec {
 		groovletInstance.params = [name: "name", tags: ["first", "second"], script: 'script', template: 'template']
         
 		
-		use(GaelykCategory){
-			groovletInstance.post()
-		}
+		groovletInstance.post()
 		
 		def json = new JsonSlurper().parseText(sw.toString())
 		
@@ -46,9 +39,7 @@ class SaveGroovletSpec extends ConsolePluginGroovletSpec {
         groovletInstance.params = [name: "/WEB-INF/org/example/gaelykconsole/test.gtpl", tags: ["war"], script: '', template: 'TEST']
         
         
-        use(GaelykCategory){
-            groovletInstance.post()
-        }
+        groovletInstance.post()
         
         def json = new JsonSlurper().parseText(sw.toString())
         

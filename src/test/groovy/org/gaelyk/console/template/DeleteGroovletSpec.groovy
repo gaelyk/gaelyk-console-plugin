@@ -1,15 +1,11 @@
 package org.gaelyk.console.template
 
-import java.io.StringWriter
-
-import eu.appsatori.gaelyk.console.ConsolePluginGroovletSpec
-import eu.appsatori.gaelyk.console.ConsoleScriptRepository
-import eu.appsatori.gaelyk.console.ConsoleTemplateRepository
-
 import groovy.json.JsonSlurper
-import groovy.lang.MetaClass
-import groovyx.gaelyk.GaelykCategory
 import groovyx.gaelyk.spock.GroovletUnderSpec
+
+import org.gaelyk.console.ConsolePluginGroovletSpec
+import org.gaelyk.console.ConsoleScriptRepository
+import org.gaelyk.console.ConsoleTemplateRepository
 
 class DeleteGroovletSpec extends ConsolePluginGroovletSpec {
 
@@ -23,7 +19,7 @@ class DeleteGroovletSpec extends ConsolePluginGroovletSpec {
         ConsoleTemplateRepository.save("name", "script", "template", "first", "second")
         groovletInstance.params = [name: "name"]
 
-        use(GaelykCategory){ groovletInstance.get() }
+        groovletInstance.get()
 
         def json = new JsonSlurper().parseText(sw.toString())
 
@@ -38,7 +34,7 @@ class DeleteGroovletSpec extends ConsolePluginGroovletSpec {
         when:
         groovletInstance.params = [name: "/WEB-INF/org/example/gaelykconsole/test.gtpl"]
 
-        use(GaelykCategory){ groovletInstance.get() }
+        groovletInstance.get()
 
         def json = new JsonSlurper().parseText(sw.toString())
 

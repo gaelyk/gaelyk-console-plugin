@@ -1,8 +1,9 @@
-package eu.appsatori.gaelyk.console.script
+package org.gaelyk.console.script
 
-import eu.appsatori.gaelyk.console.ConsoleScriptRepository
-import eu.appsatori.gaelyk.console.GaelykConsolePlugin;
 import groovy.json.JsonBuilder
+
+import org.gaelyk.console.ConsoleScriptRepository
+import org.gaelyk.console.GaelykConsolePlugin
 
 
 JsonBuilder json = []

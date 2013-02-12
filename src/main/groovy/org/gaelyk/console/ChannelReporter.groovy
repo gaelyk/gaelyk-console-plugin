@@ -1,8 +1,8 @@
 package org.gaelyk.console
 
 import com.google.appengine.api.channel.ChannelMessage
-import com.google.appengine.api.channel.ChannelServiceFactory
 import com.google.appengine.api.channel.ChannelService
+import com.google.appengine.api.channel.ChannelServiceFactory
 
 class ChannelReporter {
 	final ChannelService service = ChannelServiceFactory.channelService

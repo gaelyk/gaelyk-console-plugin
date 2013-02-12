@@ -27,7 +27,7 @@ dependencies {
 	        "com.google.appengine:appengine-api-labs:${ext.gaelykAppEngineVersion}"
 	compile	"org.gaelyk:gaelyk:${ext.gaelykLatestVersion}"
 	compile	"org.gaelyk:gaelyk-resources:${ext.gaelykLatestVersion}"
-    compile "org.gaelyk:gaelyk-bootstrap-resources:${ext.gaelykLatestVersion}'"
+    compile "org.gaelyk:gaelyk-bootstrap-resources:${ext.gaelykLatestVersion}"
 
 
 	testCompile "org.gaelyk:gaelyk-spock:${ext.gaelykSpockLatestVersion}",

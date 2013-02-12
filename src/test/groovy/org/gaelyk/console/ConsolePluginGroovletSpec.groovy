@@ -1,12 +1,6 @@
 package org.gaelyk.console
 
-import java.io.StringWriter;
-
-import groovy.json.JsonSlurper;
-import groovy.lang.MetaClass
-import groovyx.gaelyk.GaelykCategory;
-import groovyx.gaelyk.spock.GaelykUnitSpec;
-import groovyx.gaelyk.spock.GroovletUnderSpec;
+import groovyx.gaelyk.spock.GaelykUnitSpec
 
 abstract class ConsolePluginGroovletSpec extends GaelykUnitSpec {
 

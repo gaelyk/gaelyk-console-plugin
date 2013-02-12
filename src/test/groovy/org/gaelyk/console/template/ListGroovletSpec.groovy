@@ -1,15 +1,10 @@
 package org.gaelyk.console.template
 
-import java.io.StringWriter;
+import groovy.json.JsonSlurper
+import groovyx.gaelyk.spock.GroovletUnderSpec
 
-import eu.appsatori.gaelyk.console.ConsolePluginGroovletSpec;
-import eu.appsatori.gaelyk.console.ConsoleTemplateRepository;
-
-import groovy.json.JsonSlurper;
-import groovy.lang.MetaClass
-import groovyx.gaelyk.GaelykCategory;
-import groovyx.gaelyk.spock.GaelykUnitSpec;
-import groovyx.gaelyk.spock.GroovletUnderSpec;
+import org.gaelyk.console.ConsolePluginGroovletSpec
+import org.gaelyk.console.ConsoleTemplateRepository
 
 class ListGroovletSpec extends ConsolePluginGroovletSpec {
 
@@ -20,9 +15,7 @@ class ListGroovletSpec extends ConsolePluginGroovletSpec {
 		ConsoleTemplateRepository.save("name", "text", "template", "first", "second")
 		ConsoleTemplateRepository.save("other", "text", "template", "second", "third")
 		
-		use(GaelykCategory){
-			groovletInstance.get()
-		}
+		groovletInstance.get()
 		
 		def json = new JsonSlurper().parseText(sw.toString())
 		
@@ -41,9 +34,7 @@ class ListGroovletSpec extends ConsolePluginGroovletSpec {
 		
 		groovletInstance.params = [tags: "third"]
 		
-		use(GaelykCategory){
-			groovletInstance.get()
-		}
+		groovletInstance.get()
 		
 		def json = new JsonSlurper().parseText(sw.toString())
 		

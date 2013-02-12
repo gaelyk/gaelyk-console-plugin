@@ -1,16 +1,10 @@
 package org.gaelyk.console
 
-import groovy.lang.GroovyShell;
-import groovy.lang.Script;
-import groovy.text.SimpleTemplateEngine;
-import groovyx.gaelyk.GaelykBindingEnhancer;
-import groovyx.gaelyk.GaelykCategory;
-import groovyx.gaelyk.plugins.PluginsHandler;
+import groovy.text.SimpleTemplateEngine
+import groovyx.gaelyk.GaelykBindingEnhancer
+import groovyx.gaelyk.plugins.PluginsHandler
 
-import java.io.StringWriter;
-
-import org.codehaus.groovy.control.CompilationFailedException;
-import org.codehaus.groovy.control.CompilerConfiguration;
+import org.codehaus.groovy.control.CompilationFailedException
 
 class ConsoleTemplateRenderer {
     
@@ -30,10 +24,8 @@ class ConsoleTemplateRenderer {
         PluginsHandler.instance.enrich(binding)
         GroovyShell shell = new GroovyShell(binding)
         try {
-            use([GaelykCategory, * PluginsHandler.instance.categories]) {
-                String templateAsScript = TemplateToScriptConverter.getTemplateAsScript(template)
-                shell.evaluate script + '\n' + templateAsScript
-            }
+            String templateAsScript = TemplateToScriptConverter.getTemplateAsScript(template)
+            shell.evaluate script + '\n' + templateAsScript
         } catch (Throwable e){
             e.printStackTrace(out)
         }
