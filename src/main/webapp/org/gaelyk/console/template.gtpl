@@ -62,6 +62,9 @@
         margin-right: 20px;
     }
     
+    #name, #tags {
+ 		margin-bottom: 9px;
+ 	}
     
 </style>
 
