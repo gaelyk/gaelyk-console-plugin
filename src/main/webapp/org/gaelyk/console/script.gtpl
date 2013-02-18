@@ -53,6 +53,10 @@
  		margin-right: 20px;
  	}
  	
+ 	#name, #tags {
+ 		margin-bottom: 9px;
+ 	}
+ 	
  	
 </style>
 <script type="text/javascript" src="/gpr/gaelykconsole/js/jq-common.js"></script>
