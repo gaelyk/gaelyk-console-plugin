@@ -4,11 +4,15 @@ import groovyx.gaelyk.plugins.PluginBaseScript
 
 class GaelykConsolePlugin extends PluginBaseScript {
     
+    static final int FIRST_ROUTE_INDEX = -30000
+    
     static allowReadOnly = false
-    static fontSize = 12;
+    static fontSize = 12
     
     @Override
     public Object run() {
+        firstRouteIndex = FIRST_ROUTE_INDEX
+        
         get     "/_ah/channel/**",                      ignore: true
         
         post    "/_ah/gaelyk-console/script/execute",   forward: "/org/gaelyk/console/script/executor.groovy"
