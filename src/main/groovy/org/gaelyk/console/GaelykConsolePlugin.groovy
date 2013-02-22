@@ -11,7 +11,7 @@ class GaelykConsolePlugin extends PluginBaseScript {
     
     @Override
     public Object run() {
-        firstRouteIndex = FIRST_ROUTE_INDEX
+        startRoutingAt FIRST_ROUTE_INDEX
         
         get     "/_ah/channel/**",                      ignore: true
         
