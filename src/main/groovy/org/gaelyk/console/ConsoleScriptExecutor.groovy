@@ -1,7 +1,6 @@
 package org.gaelyk.console
 
 import groovyx.gaelyk.GaelykBindingEnhancer
-import groovyx.gaelyk.logging.GroovyLogger
 import groovyx.gaelyk.plugins.PluginsHandler
 
 class ConsoleScriptExecutor {
@@ -11,7 +10,7 @@ class ConsoleScriptExecutor {
 		Binding binding = new Binding()
 		binding.out = out
 		binding.report = new ChannelReporter(channelId)
-        binding.log = new OutLogger(out)
+ 		binding.log = new OutLogger(out)
 		GaelykBindingEnhancer.bind(binding)
 		PluginsHandler.instance.enrich(binding)
 		GroovyShell shell = new GroovyShell(binding)
