@@ -104,8 +104,14 @@ class ConsoleScriptExecutorSpec extends Specification {
         result.result == "11"
         result.output == "Hello World!"
     }
-    
-    
-	
 
+    def "Log works"(){
+        def result = ConsoleScriptExecutor.evaluate "channel", """
+            log.info 'Logging is informative!'
+        """
+        
+        expect:
+        !result.exception
+        result.output == "INFO: Logging is informative!\n"
+    }
 }
