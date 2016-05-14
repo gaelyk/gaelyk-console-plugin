@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+<<<<<<< HEAD
       maven {
         url "https://plugins.gradle.org/m2/"
       }
@@ -9,6 +10,15 @@ buildscript {
 
     dependencies {
       classpath "gradle.plugin.org.gradle.api.plugins:gradle-gaelyk-plugin:0.7.1"
+=======
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.7.1'
+        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.34'
+>>>>>>> 9030009220ffa966d43632bf01a04f07e6560055
     }
 }
 
@@ -16,6 +26,13 @@ apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common.gradle'
 apply plugin: 'war'
 apply plugin: 'org.gaelyk'
 apply plugin: 'maven'
+<<<<<<< HEAD
+=======
+apply plugin: 'appengine'
+apply plugin: 'war'
+apply plugin: 'gaelyk'
+>>>>>>> 9030009220ffa966d43632bf01a04f07e6560055
+
 
 def pluginName = 'gaelyk-console'
 version = ext.gaelykLatestVersion
@@ -33,7 +50,11 @@ dependencies {
 	testCompile "org.gaelyk:gaelyk-spock:${project.ext.gaelykSpockLatestVersion}",
 			"com.google.appengine:appengine-api-stubs:${project.ext.gaelykAppEngineVersion}",
 			"com.google.appengine:appengine-testing:${project.ext.gaelykAppEngineVersion}"
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> 9030009220ffa966d43632bf01a04f07e6560055
 	appengineSdk "com.google.appengine:appengine-java-sdk:${project.ext.gaelykAppEngineVersion}"
 }
 
