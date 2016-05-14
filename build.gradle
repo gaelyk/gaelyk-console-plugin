@@ -1,53 +1,47 @@
 buildscript {
-
     repositories {
-        mavenCentral()
+      maven {
+        url "https://plugins.gradle.org/m2/"
+      }
+      mavenCentral()
+      jcenter()
     }
 
     dependencies {
-        classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.4.1'
-        classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6'
+      classpath "gradle.plugin.org.gradle.api.plugins:gradle-gaelyk-plugin:0.7.1"
     }
 }
 
 apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common.gradle'
-
-
+apply plugin: 'war'
+apply plugin: 'org.gaelyk'
 apply plugin: 'maven'
-apply plugin: 'gae'
-apply plugin: 'gaelyk'
 
 def pluginName = 'gaelyk-console'
 version = ext.gaelykLatestVersion
 group = 'org.gaelyk'
 
 dependencies {
-	groovy "org.codehaus.groovy:groovy-all:${ext.gaelykGroovyVersion}"
-	compile "com.google.appengine:appengine-api-1.0-sdk:${ext.gaelykAppEngineVersion}",
-	        "com.google.appengine:appengine-api-labs:${ext.gaelykAppEngineVersion}"
-	compile	"org.gaelyk:gaelyk:${ext.gaelykLatestVersion}"
-	compile	"org.gaelyk:gaelyk-resources:${ext.gaelykLatestVersion}"
-    compile "org.gaelyk:gaelyk-bootstrap-resources:${ext.gaelykLatestVersion}"
+	compile "org.codehaus.groovy:groovy-all:${project.ext.gaelykGroovyVersion}"
+	compile "com.google.appengine:appengine-api-1.0-sdk:${project.ext.gaelykAppEngineVersion}",
+	        "com.google.appengine:appengine-api-labs:${project.ext.gaelykAppEngineVersion}"
+	compile	"org.gaelyk:gaelyk:${project.ext.gaelykLatestVersion}"
+	compile	"org.gaelyk:gaelyk-resources:${project.ext.gaelykLatestVersion}"
+    compile "org.gaelyk:gaelyk-bootstrap-resources:${project.ext.gaelykLatestVersion}"
 
 
-	testCompile "org.gaelyk:gaelyk-spock:${ext.gaelykSpockLatestVersion}",
-			"com.google.appengine:appengine-api-stubs:${ext.gaelykAppEngineVersion}",
-			"com.google.appengine:appengine-testing:${ext.gaelykAppEngineVersion}"
-			
-	gaeSdk "com.google.appengine:appengine-java-sdk:${ext.gaelykAppEngineVersion}"
-}
+	testCompile "org.gaelyk:gaelyk-spock:${project.ext.gaelykSpockLatestVersion}",
+			"com.google.appengine:appengine-api-stubs:${project.ext.gaelykAppEngineVersion}",
+			"com.google.appengine:appengine-testing:${project.ext.gaelykAppEngineVersion}"
 
-
-gae {
-    optimizeWar = true
+	appengineSdk "com.google.appengine:appengine-java-sdk:${project.ext.gaelykAppEngineVersion}"
 }
 
 jar {
 	baseName pluginName
 }
 
-jar.dependsOn gaelykPrecompileTemplate
-jar.dependsOn gaelykPrecompileGroovlet
+jar.dependsOn gaelykPrecompileTemplates
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
 	baseName = pluginName
@@ -98,29 +92,29 @@ if(hasProperty('nexusUsername') && hasProperty('nexusPassword')){
                 if(signingEnabled){
                     beforeDeployment { MavenDeployment deployment ->
                         signing.signPom(deployment)
-                    }                    
+                    }
                 }
-	
+
 				def auth = {
 				  authentication(userName: nexusUsername, password: nexusPassword)
 				}
-	
+
 				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/", auth)
 				snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots", auth)
-	
-	
+
+
 				pom.project {
 				   name 'Gaelyk Console Plugin'
 				   packaging 'jar'
 				   description 'Gaelyk Console Plugin adds simple console which can execute groovlet like code.'
 				   url 'https://github.com/gaelyk/gaelyk-console-plugin'
-	
+
 				   scm {
 					   url 'scm:git@github.com:gaelyk/gaelyk-console-plugin.git'
 					   connection 'scm:git@github.com:gaelyk/gaelyk-console-plugin.git'
 					   developerConnection 'scm:git@github.com:gaelyk/gaelyk-console-plugin.git'
 				   }
-	
+
 				   licenses {
 					   license {
 						   name 'The Apache Software License, Version 2.0'
@@ -128,7 +122,7 @@ if(hasProperty('nexusUsername') && hasProperty('nexusPassword')){
 						   distribution 'repo'
 					   }
 				   }
-	
+
 				   developers {
 					   developer {
 						   id 'vladimirorany'
@@ -136,14 +130,14 @@ if(hasProperty('nexusUsername') && hasProperty('nexusPassword')){
 					   }
 				   }
 			   }
-	
+
 			   //mess with the generated pom to set the 'packaging' tag
 			   pom.withXml { XmlProvider xmlProvider ->
 				   def xml = xmlProvider.asString()
 				   def pomXml = new XmlParser().parse(new ByteArrayInputStream(xml.toString().bytes))
-	
+
 				   pomXml.version[0] + { packaging('jar') }
-	
+
 				   def newXml = new StringWriter()
 				   def printer = new XmlNodePrinter(new PrintWriter(newXml))
 				   printer.preserveWhitespace = true
